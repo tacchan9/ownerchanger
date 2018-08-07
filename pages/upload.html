@@ -1,0 +1,62 @@
+{{ define "content" }}
+<br>
+<form action="/upload" class="col s12" method="post" enctype="multipart/form-data" id="uploadForm">
+    <div class="row">
+        <div class="input-field col s1"></div>
+        <div class="input-field col s10">
+             <ul class="collapsible popout" data-collapsible="accordion">
+                 <li>
+                    <div class="collapsible-header">
+                      <i class="material-icons">file_upload</i>
+                      CSVファイルについて
+                    </div>
+                    <div class="collapsible-body white">
+                        <p>・ファイル名の拡張子は.csv</p>
+                        <p>・ファイル行数は500行以下</p>
+                        <p>・文字コードはUTF-8</p>
+                        <p>・フォーマットについて(１行目ヘッダー行)</p>
+                        <p style="margin-left:30px"> 変更元アカウント, 変更先アカウント, ファイル(またフォルダ)ID, ファイル(またフォルダ)名</p>
+                        <p></p>
+                        <p>例：</p>
+                        <p style="margin-left:30px">from@example.com,to@example.com,abcdefghijklmnopqrstuvwxyz,変更ファイル</p>
+                    </div>
+                 </li>
+            </ul>
+        </div>
+        <div class="input-field col s1"></div>
+    </div>
+    <div class="row">
+        <div class="input-field col s2"></div>
+        <div class="input-field col s8">
+            <div class="file-field input-field">
+                <div class="btn blue">
+                    <span>File</span>
+                    <input type="file" name="csv" id="inputFile">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+        </div>
+        <div class="input-field col s2"></div>
+    </div>
+    <div class="row">
+        <div class="input-field col s2"></div>
+        <div class="input-field col s8" align="right">
+            <a class="waves-effect waves-light btn blue uploadModal modal-trigger" href="#uploadModal">アップロード</a>
+        </div>
+        <div class="input-field col s2"></div>
+    </div>
+<!-- Modal Structure -->
+<div id="uploadModal" class="modal">
+  <div class="modal-content">
+    <p><b>CSVアップロードを行います。<br>よろしいですか。</b></p>
+  </div>
+  <div class="modal-footer">
+    <a href="javascript:void(0)" onclick="upload()" class="red-text modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">キャンセル</a>
+  </div>
+</div>
+
+</form>
+{{ end }}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Owner Changer</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+  </head>
+  <body class ="grey lighten-4">
+    <nav class="blue">
+      <div class="nav-wrapper">
+      	<a href="#" style="margin-right:20px" class="right" id="userEmail">{{ .userEmail }}</a>
+        <a href="#" data-activates="menu" class="button-collapse show-on-large menu"><i class="material-icons">menu</i></a>
+        <a href="#" class="brand-logo">Owner Changer</a>
+        <form class=" hide-on-med-and-down " id="searchForm" style="margin-left:300px; display:none">
+          <div class="input-field" style="max-width:70%;">
+            <input id="search" type="search" autocomplete="off">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+      </div>
+    </nav>
+    <div class="container">
+        {{ template "content" . }}
+
+    </div>
+
+    <!-- menu -->
+    <ul class="side-nav white" id="menu">
+      <li class="sidenav-header blue">
+       <div class="row" align="center">
+          <div class="col s12 white-text">Owner Changer</Owner></div>
+        </div>
+      </li>
+      <li class="white">
+        <a href="/" class="waves-effect waves-blue">
+          <i class="material-icons">account_circle</i>アカウント切替
+        </a>
+      </li>
+      <li class="white">
+        <a href="/uploadView" class="waves-effect waves-blue">
+          <i class="material-icons">file_upload</i>CSV登録
+        </a>
+      </li>
+      <li class="white">
+        <a href="/statusListView" class="waves-effect waves-blue">
+          <i class="material-icons">list</i>実行結果
+        </a>
+      </li>
+      <li class="white">
+        <a href="/ngListView" class="waves-effect waves-blue">
+          <i class="material-icons">error</i>エラー
+        </a>
+      </li>
+      <li class="white">
+        <a href="/settings" class="waves-effect waves-blue">
+          <i class="material-icons">brightness_low</i>管理
+        </a>
+      </li>
+      <li class="white"><div class="divider"></div></li>
+      <li class="white" >
+        <a href="/logout" class="waves-effect waves-blue">
+          <i class="material-icons">keyboard_backspace</i><span>ログアウト</span>
+        </a>
+      </li>
+    </ul>
+    <!-- change -->
+    <ul class="side-nav white" id="ownerchange">
+      <li class="sidenav-header blue">
+        <div class="row">
+          <div class="col s12 white-text">オーナー</div>
+        </div>
+      </li>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="toEmail" type="email" class="validate">
+          <label for="toEmail">Email</label>
+        </div>
+      </div>
+      <div style="margin-right:20px" align="right">
+        <a href="#modal1" class="waves-effect waves-light btn blue modal-trigger disabled" id="changeBtn">変更</a>                
+      </div>
+    </ul>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <p>オーナー変更を行います。よろしいですか。</p>
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:void(0)" onclick="ownerChange()" class="red-text modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">キャンセル</a>
+      </div>
+    </div>
+    <!-- ngInfo -->
+    <ul class="side-nav white" id="nginfo">
+      <li class="sidenav-header blue">
+        <div class="row">
+          <div class="col s12 white-text">Info</div>
+        </div>
+      </li>
+      <div class="row">
+        <table class="bordered">
+          <tbody>
+            <tr>
+              <td>Date:</td>
+              <td id="ngDate"></td>
+            </tr>
+            <tr>
+              <td>User:</td>
+              <td id="ngUser"></td>
+            </tr>
+            <tr>
+              <td>Name:</td>
+              <td id="ngName"></td>
+            </tr>
+            <tr>
+              <td>CsvName:Row:</td>
+              <td id="ngCsvName"></td>
+            </tr>
+            <tr>
+              <td>From:</td>
+              <td id="ngFrom"></td>
+            </tr>
+            <tr>
+              <td>To:</td>
+              <td id="ngTo"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ul>
+    <!-- driveInfo -->
+    <ul class="side-nav white" id="driveInfo">
+      <li class="sidenav-header blue">
+        <div class="row">
+          <div class="col s12 white-text">詳細</div>
+        </div>
+      </li>
+      <div class="row">
+        <table class="bordered">
+          <tbody>
+            <tr>
+              <td>ファイル形式:</td>
+              <td id="diMimeType"></td>
+            </tr>
+            <tr>
+              <td>更新日時:</td>
+              <td id="diModifiedTime"></td>
+            </tr>
+            <tr>
+              <td>作成日時:</td>
+              <td id="diCreatedTime"></td>
+            </tr>
+            <tr>
+              <td>共有:</td>
+              <td id="diShare"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-right:20px" align="right">
+        <a href="javascript:void(0)" onclick="" class="waves-effect waves-light btn blue" id="fileDlBtn">ダウンロード</a>                
+      </div>
+    </ul>
+  </body>
+</html>

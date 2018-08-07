@@ -1,0 +1,60 @@
+{{ define "content" }}
+<div id="statusBack" style="display:none">
+	<br><a href="javascript:void(0)" onclick="statusBack()" class="waves-effect waves-light btn blue">戻る</a>
+</div>
+<table class="highlight bordered">
+	<thead id="headerStatus">
+    	<tr>
+        	<th style="width:30%">Date<br>User</th>
+            <th style="width:5%"></th>
+            <th style="width:30%">Name<br>CsvName:Row</th>
+            <th style="width:30%">From<br>To</th>
+            <th style="width:5%">Result</th>
+
+        </tr>
+    </thead>
+    <thead id="headerStatusInfo" style="display:none">
+    	<tr>
+        	<th style="width:30%">Date</th>
+            <th style="width:5%"></th>
+            <th style="width:55%">Name</th>
+            <th style="width:10%">Result</th>
+        </tr>
+    </thead>
+
+    <tbody class="white" id="statusDatas"></tbody>
+    <tbody class="white" id="statusInfoDatas" style="display:none"></tbody>
+</table>
+<div id="preloader">
+	<div class="row" style="height:50px"></div>
+    <div class="row" align="center">
+    	<div class="preloader-wrapper big active">
+        	<div class="spinner-layer spinner-blue-only">
+            	<div class="circle-clipper left">
+                	<div class="circle"></div>
+                </div>
+               	<div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                	<div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<datalist id="searchStatus">
+    <option value="Date:">
+    <option value="User:">
+    <option value="Name:">
+    <option value="CsvName:">
+    <option value="From:">
+    <option value="To:">
+    <option value="Result:">
+</datalist>
+<datalist id="searchStatusInfo">
+    <option value="Date:">
+    <option value="Name:">
+    <option value="Result:">
+</datalist>
+{{ end }}

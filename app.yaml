@@ -1,0 +1,24 @@
+runtime: go
+api_version: go1
+
+#default_expiration: "4d 5h"
+
+#static server
+handlers:
+
+- url: /js/materialize.min.js
+  static_files: js/materialize.min.js
+  upload: js/materialize.min.js
+
+- url: /(.*\.(gif|png|jpg))$
+  static_files: static/\1
+  upload: static/.*\.(gif|png|jpg)$
+  
+- url: /css
+  static_dir: css
+
+- url: /fonts
+  static_dir: fonts
+
+- url: /.*
+  script: _go_app

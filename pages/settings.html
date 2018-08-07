@@ -1,0 +1,50 @@
+{{ define "content" }}
+<br>       
+ <ul class="collapsible popout" data-collapsible="accordion">
+  <li>
+    <div class="collapsible-header">
+      <i class="material-icons">sync</i>
+      実行中タスク
+      <span class="new badge blue" data-badge-caption="task" id="taskCnt">0</span></div>
+    <div class="collapsible-body">
+      <p id="taskMsg"></p>
+      <p><a class="waves-effect waves-light btn blue" href="javascript:void(0)" onclick="getTask()">更新</a></p>
+    </div>
+  </li>
+  <li>
+    <div class="collapsible-header">
+      <i class="material-icons">clear</i>
+      タスクキャンセル
+    </div>
+    <div class="collapsible-body"><p><a class="waves-effect waves-light btn modal-trigger red" href="#taskCancel">キャンセル</a></p></div>
+  </li>
+  <li>
+    <div class="collapsible-header">
+      <i class="material-icons">supervisor_account</i>
+      サジェスト
+    </div>
+    <div class="collapsible-body">
+      <p>
+        <div class="input-field col s10 m8 l6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="adminEmail" name="adminEmail" type="text" class="validate" autocomplete="off">
+          <label for="adminEmail">特権管理者</label>
+        </div>
+      </p>
+      <p><a class="waves-effect waves-light btn blue" href="javascript:void(0)" onclick="setSuggest()">更新</a></p>
+    </div>
+  </li>
+</ul>
+
+<!-- Modal Structure -->
+<div id="taskCancel" class="modal">
+  <div class="modal-content">
+    <p><b>既にオーナーが変更されたファイルはキャンセルされません。<br>よろしいですか。</b></p>
+  </div>
+  <div class="modal-footer">
+    <a href="javascript:void(0)" onclick="taskCancel()" class="red-text modal-action modal-close waves-effect waves-green btn-flat">実行</a>
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">キャンセル</a>
+  </div>
+</div>
+
+{{ end }}

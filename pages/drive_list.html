@@ -1,0 +1,52 @@
+{{ define "content" }}
+<hidden id="driveId" value="" />
+<hidden id="nextPageToken" value="" />
+<form class="col s12">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s6 m6 l6">
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-button btn blue' href='#' data-activates='dropdown1' id="current" style="text-transform:none;">マイドライブ</a>
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="javascript:void(0)" onclick="clickMyDrive()" class="blue-text">マイドライブ</a></li>
+                <li class="divider"></li>
+                <div id="divider"></div>
+            </ul>
+        </div>
+        <div class="col s6 m6 l6" align="right">
+            <a class="waves-effect waves-light btn blue" href="javascript:void(0)" id="downloadBtn">CSVダウンロード</a>
+        </div>
+
+    </div>
+</form>
+<table class="highlight bordered" name="driveList">
+    <thead>
+        <tr name="header">
+            <th style="width:5%"></th>
+            <th style="width:65%">名前</th>
+            <th style="width:30%">オーナー</th>
+        </tr>
+    </thead>
+    <tbody class="white" id="driveDatas"></tbody>
+</table>
+<div id="preloader">
+	<div class="row" style="height:50px"></div>
+    <div class="row" align="center">
+    	<div class="preloader-wrapper big active">
+        	<div class="spinner-layer spinner-blue-only">
+            	<div class="circle-clipper left">
+                	<div class="circle"></div>
+                </div>
+               	<div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                	<div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

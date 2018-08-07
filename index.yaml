@@ -1,0 +1,65 @@
+indexes:
+- kind: StatusInfo
+  properties:
+  - name: ParnetId
+  - name: InsertDate
+    direction: desc
+
+- kind: StatusInfo
+  properties:
+  - name: ParnetId
+  - name: DriveNm
+  
+- kind: StatusInfo
+  properties:
+  - name: ParnetId
+  - name: Result
+  
+- kind: StatusInfo
+  properties:
+  - name: ParnetId
+  - name: InsertDate
+  
+- kind: StatusInfo
+  properties:
+  - name: Result
+  - name: InsertDate
+    direction: desc
+  
+- kind: Status
+  properties:
+  - name: User
+  - name: InsertDate
+    direction: desc
+
+- kind: Status
+  properties:
+  - name: DriveNm
+  - name: InsertDate
+    direction: desc
+
+- kind: Status
+  properties:
+  - name: Note
+  - name: InsertDate
+    direction: desc
+
+- kind: Status
+  properties:
+  - name: From
+  - name: InsertDate
+    direction: desc
+
+- kind: Status
+  properties:
+  - name: To
+  - name: InsertDate
+    direction: desc
+
+- kind: Status
+  properties:
+  - name: Accept
+  - name: InsertDate
+    direction: desc
+
+
